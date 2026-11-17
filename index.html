@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Guilherme Brito</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="container cabecalho-inner">
+            <a class="nome" href="#">Guilherme Brito</a>
+
+            <nav class="menu" aria-label="Navegação Principal">
+                <a href="#sobre">Sobre</a>
+                <a href="#conhecimentos">Conhecimentos</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#contato">Contato</a>
+            </nav>
+
+            <button id="tema" type="button" aria-pressed="false">Tema claro</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- SOBRE (primeira tela, junto com a apresentação) -->
+        <section id="sobre" class="secao">
+          <div class="secao-conteudo inicio">
+            <img class="foto" src="img/foto-perfil.jpg" alt="Foto de Guilherme Brito" width="500" height="500">
+
+            <div class="intro">
+                <h1>Meu portfólio</h1>
+                <p>Estudante em formação de Engenharia de Software na UCSal. Aqui ficam os projetos que venho fazendo enquanto aprendo Front-End.</p>
+            </div>
+
+            <aside class="ficha">
+                <p class="ficha-rotulo">Objetivo atual</p>
+                <p class="ficha-objetivo">Desenvolver meus primeiros projetos Front-End.</p>
+                <ul>
+                    <li><span class="ficha-rotulo">Interesse</span> Desenvolvimento web</li>
+                    <li><span class="ficha-rotulo">Inglês</span> Intermediário</li>
+                </ul>
+                <div class="ficha-links">
+                    <a href="https://github.com/GuiBrito0" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/guilherme-brito-92a868437/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </aside>
+
+            <div class="sobre-texto">
+                <h2>Sobre mim</h2>
+                <p>Meu nome é Guilherme Araujo de Brito. Aluno da UCSal, em formação no curso de Front-End / Engenharia de Software.</p>
+                <div id="mais-info" hidden>
+                    <p>Atualmente estou me aprofundando em JavaScript, manipulação da árvore DOM, acessibilidade e desenvolvimento de interfaces dinâmicas.</p>
+                </div>
+                <button id="btn-toggle-sobre" class="botao-link" type="button" aria-expanded="false" aria-controls="mais-info">Mostrar mais</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONHECIMENTOS -->
+        <section id="conhecimentos" class="secao">
+          <div class="secao-conteudo">
+            <h2>Conhecimentos</h2>
+            <!-- Logos: Devicon (https://devicon.dev) -->
+            <ul class="linguagens">
+                <li class="linguagem">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="" width="64" height="64">
+                    <h3>HTML</h3>
+                    <p class="nivel">Nível: <strong>Intermediário</strong></p>
+                    <p>Estrutura de páginas</p>
+                </li>
+                <li class="linguagem">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="" width="64" height="64">
+                    <h3>CSS</h3>
+                    <p class="nivel">Nível: <strong>Intermediário</strong></p>
+                    <p>Estilo e layout das páginas</p>
+                </li>
+                <li class="linguagem">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg" alt="" width="64" height="64">
+                    <h3>Tailwind</h3>
+                    <p class="nivel">Nível: <strong>Inicial</strong></p>
+                    <p>Estilização com classes prontas</p>
+                </li>
+                <li class="linguagem">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="" width="64" height="64">
+                    <h3>JavaScript</h3>
+                    <p class="nivel">Nível: <strong>Inicial</strong></p>
+                    <p>Interatividade da página</p>
+                </li>
+                <li class="linguagem">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="" width="64" height="64">
+                    <h3>Java</h3>
+                    <p class="nivel">Nível: <strong>Intermediário</strong></p>
+                    <p>Back-End</p>
+                </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- PROJETOS -->
+        <section id="projetos" class="secao">
+          <div class="secao-conteudo">
+            <h2>Projetos</h2>
+
+            <form id="cadastro" novalidate>
+                <div class="form-group">
+                    <label for="nome">Nome do projeto</label>
+                    <input id="nome" name="nome" value="Portfólio" required minlength="3" placeholder="Nome do projeto" aria-describedby="contador-caracteres">
+                    <small id="contador-caracteres" class="dica">9 caracteres</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" name="categoria">
+                        <option value="web">Web</option>
+                        <option value="mobile">Mobile</option>
+                        <option value="desktop">Desktop</option>
+                    </select>
+                </div>
+
+                <button type="submit">Adicionar projeto</button>
+            </form>
+
+            <div class="controles-filtro">
+                <label for="filtro">Filtrar projetos</label>
+                <select id="filtro">
+                    <option value="todos">Todos</option>
+                    <option value="web">Web</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="desktop">Desktop</option>
+                </select>
+                <span id="contador-visiveis" aria-live="polite">Projetos visíveis: 2</span>
+            </div>
+
+            <p id="status" role="status" aria-live="polite"></p>
+
+            <p id="mensagem-vazia" class="mensagem-vazia oculto" role="status">Nenhum projeto encontrado para o filtro selecionado.</p>
+
+            <div id="lista-projetos" class="projetos">
+                <article class="projeto" data-categoria="web">
+                    <h3>Meu primeiro site em aula</h3>
+                    <p>Projeto criado em aula para testes.</p>
+                    <p>Tecnologia: HTML, CSS</p>
+                    <a href="Clube.html" target="_blank" class="botao">Projeto do Bahia</a>
+                    <button class="remover" type="button">Remover</button>
+                </article>
+
+                <article class="projeto" data-categoria="desktop">
+                    <h3>Locadora de Veículos</h3>
+                    <p>Sistema de locadora feito no trabalho de POO: cadastrar, alterar, excluir, listar e buscar veículos pela placa, com diária calculada por tipo de veículo.</p>
+                    <p>Tecnologia: Java (herança, encapsulamento e polimorfismo)</p>
+                    <a href="https://github.com/GuiBrito0/Trabalho-POO" target="_blank" rel="noopener noreferrer" class="botao">Ver no GitHub</a>
+                    <button class="remover" type="button">Remover</button>
+                </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTATO -->
+        <section id="contato" class="secao">
+          <div class="secao-conteudo contato">
+            <!-- Esquerda: informações (mesmo estilo da ficha da primeira tela) -->
+            <div class="contato-info">
+                <h2>Contato</h2>
+                <p class="contato-texto">Quer falar sobre um projeto, estágio ou trocar uma ideia? Manda uma mensagem.</p>
+
+                <div class="ficha">
+                    <ul>
+                        <li><span class="ficha-rotulo">E-mail</span> <a href="mailto:guilherme.brito@ucsal.edu.br">guilherme.brito@ucsal.edu.br</a></li>
+                    </ul>
+                    <div class="ficha-links">
+                        <a href="https://github.com/GuiBrito0" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://www.linkedin.com/in/guilherme-brito-92a868437/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                </div>
+
+                <p class="aviso">O formulário é uma demonstração acadêmica: nenhum e-mail real é enviado por ele.</p>
+            </div>
+
+            <!-- Direita: formulário -->
+            <div class="contato-form">
+            <p id="resumo-erros" class="resumo-erros oculto" role="alert" tabindex="-1"></p>
+            <p id="status-envio" class="status-envio oculto" role="status" aria-live="polite"></p>
+
+            <form id="form-contato" novalidate>
+                <div class="form-linha">
+                <div class="form-group">
+                    <label for="nome-contato">Nome <span class="obrigatorio">*</span></label>
+                    <input type="text" id="nome-contato" name="nome" required minlength="3" maxlength="80" placeholder="Seu nome" autocomplete="name" aria-describedby="erro-nome-contato">
+                    <small id="erro-nome-contato" class="mensagem-erro oculto"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email-contato">E-mail <span class="obrigatorio">*</span></label>
+                    <input type="email" id="email-contato" name="email" required placeholder="seuemail@exemplo.com" autocomplete="email" aria-describedby="erro-email-contato">
+                    <small id="erro-email-contato" class="mensagem-erro oculto"></small>
+                </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivo-contato">Motivo do contato <span class="obrigatorio">*</span></label>
+                    <select id="motivo-contato" name="motivo" required aria-describedby="erro-motivo-contato">
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Oportunidade profissional">Oportunidade profissional</option>
+                        <option value="Projeto freelance">Projeto freelance</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                    <small id="erro-motivo-contato" class="mensagem-erro oculto"></small>
+                </div>
+
+                <div id="grupo-assunto" class="form-group oculto">
+                    <label for="assunto-adicional">Assunto adicional <span class="obrigatorio">*</span></label>
+                    <input type="text" id="assunto-adicional" name="assunto" minlength="5" maxlength="100" placeholder="Especifique o assunto" disabled aria-describedby="erro-assunto-adicional">
+                    <small id="erro-assunto-adicional" class="mensagem-erro oculto"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem-contato">Mensagem <span class="obrigatorio">*</span></label>
+                    <textarea id="mensagem-contato" name="mensagem" required minlength="30" maxlength="1000" placeholder="Escreva sua mensagem" aria-describedby="contador-mensagem erro-mensagem-contato"></textarea>
+                    <small id="contador-mensagem" class="dica">0 / 1000 caracteres (mínimo de 30)</small>
+                    <small id="erro-mensagem-contato" class="mensagem-erro oculto"></small>
+                </div>
+
+                <button type="submit" id="btn-enviar-contato">Enviar mensagem</button>
+            </form>
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <p>Portfólio de Guilherme Brito - 2026</p>
+            <p>Desenvolvido como atividade da disciplina de Programação Front-End.</p>
+        </div>
+    </footer>
+</body>
+</html>

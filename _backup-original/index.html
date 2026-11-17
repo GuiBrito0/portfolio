@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Guilherme Brito</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <h1>Meu portfólio</h1>
+        <p>Estudante em formação</p>
+        <button id="tema" type="button" aria-pressed="false">Alternar tema</button>
+
+        <nav class="menu" aria-label="Navegação Principal">
+            <a href="#sobre">Sobre mim</a>
+            <a href="#conhecimentos">Meus conhecimentos</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SEÇÃO SOBRE MIM -->
+        <section id="sobre" class="secao">
+            <h2>Sobre Guilherme Brito</h2>
+            <p>Meu nome é Guilherme Araujo de Brito. Aluno da UCSal, em formação no curso de Front-End / Engenharia de Software.</p>
+            <div id="mais-info" hidden>
+                <p>Atualmente estou me aprofundando em JavaScript, manipulação da árvore DOM, acessibilidade e desenvolvimento de interfaces dinâmicas.</p>
+            </div>
+            <button id="btn-toggle-sobre" type="button" aria-expanded="false" aria-controls="mais-info">Mostrar mais</button>
+        </section>
+
+        <!-- SEÇÃO CONHECIMENTOS -->
+        <section id="conhecimentos" class="secao">
+            <h2>Conhecimentos</h2>
+            <ul class="lista_con">
+                <li>HTML</li>
+                <li>JavaScript</li>
+                <li>Java</li>
+            </ul>
+
+            <table>
+                <caption>Matriz de Competências e Tecnologias</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Tecnologia</th>
+                        <th scope="col">Nível</th>
+                        <th scope="col">Onde Aplico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTML</td>
+                        <td>Intermediário</td>
+                        <td>Estrutura de páginas</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>Inicial</td>
+                        <td>Interatividade da página</td>
+                    </tr>
+                    <tr>
+                        <td>Java</td>
+                        <td>Intermediário</td>
+                        <td>Back-End</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SEÇÃO PROJETOS -->
+        <section id="projetos" class="secao">
+            <h2>Projetos</h2>
+
+            <!-- Formulário de cadastro de novo projeto (Etapa original mantida) -->
+            <form id="cadastro" novalidate>
+                <div class="form-group">
+                    <label for="nome">Nome do projeto</label>
+                    <input id="nome" name="nome" value="Portfólio" required minlength="3" placeholder="Nome do projeto" aria-describedby="contador-caracteres">
+                    <small id="contador-caracteres">9 caracteres</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" name="categoria">
+                        <option value="web">Web</option>
+                        <option value="mobile">Mobile</option>
+                    </select>
+                </div>
+
+                <button type="submit">Adicionar projeto</button>
+            </form>
+
+            <!-- Filtro de projetos (Etapa 3 - Filtro responsivo com contagem e status) -->
+            <div class="controles-filtro">
+                <label for="filtro">Filtrar projetos</label>
+                <select id="filtro">
+                    <option value="todos">Todos</option>
+                    <option value="web">Web</option>
+                    <option value="mobile">Mobile</option>
+                </select>
+                <span id="contador-visiveis" aria-live="polite">Projetos visíveis: 2</span>
+            </div>
+
+            <p id="status" role="status" aria-live="polite"></p>
+
+            <!-- Mensagem caso nenhum projeto seja encontrado (Etapa 3 - Estado vazio) -->
+            <p id="mensagem-vazia" class="mensagem-vazia oculto" role="status">Nenhum projeto encontrado para o filtro selecionado.</p>
+
+            <div id="lista-projetos" class="projetos">
+                <article class="projeto" data-categoria="web">
+                    <h3>Meu primeiro site em aula</h3>
+                    <p>Projeto criado em aula para testes.</p>
+                    <p>Tecnologia: HTML</p>
+                    <a href="Clube.html" target="_blank" class="botao">Projeto do Bahia</a>
+                    <button class="remover" type="button">Remover</button>
+                </article>
+
+                <article class="projeto" data-categoria="mobile">
+                    <h3>Portfólio pessoal</h3>
+                    <p>Projeto em desenvolvimento para apresentar meus conhecimentos.</p>
+                    <p>Tecnologias: HTML, CSS e JavaScript</p>
+                    <a href="https://github.com/GuiBrito0" target="_blank" rel="noopener noreferrer" class="botao">Ver repositórios</a>
+                    <button class="remover" type="button">Remover</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE CONTATO (Etapa 6 - Validações e Contrato dos Campos) -->
+        <section id="contato" class="secao">
+            <h2>Contato</h2>
+
+            <!-- Resumo geral de erros de validação (Acessibilidade - Passo 4) -->
+            <p id="resumo-erros" class="resumo-erros oculto" role="alert" tabindex="-1"></p>
+
+            <!-- Mensagem de status do envio simulação (Etapa 6 - Passo 6) -->
+            <p id="status-envio" class="status-envio oculto" role="status" aria-live="polite"></p>
+
+            <form id="form-contato" novalidate>
+                <div class="form-group">
+                    <label for="nome-contato">Nome <span class="obrigatorio">*</span></label>
+                    <input type="text" id="nome-contato" name="nome" required minlength="3" maxlength="80" placeholder="Digite seu nome" aria-describedby="erro-nome-contato">
+                    <small id="erro-nome-contato" class="mensagem-erro oculto"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email-contato">E-mail <span class="obrigatorio">*</span></label>
+                    <input type="email" id="email-contato" name="email" required placeholder="seuemail@exemplo.com" aria-describedby="erro-email-contato">
+                    <small id="erro-email-contato" class="mensagem-erro oculto"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivo-contato">Motivo do contato <span class="obrigatorio">*</span></label>
+                    <select id="motivo-contato" name="motivo" required aria-describedby="erro-motivo-contato">
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Oportunidade profissional">Oportunidade profissional</option>
+                        <option value="Projeto freelance">Projeto freelance</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                    <small id="erro-motivo-contato" class="mensagem-erro oculto"></small>
+                </div>
+
+                <!-- CAMPO CONDICIONAL (Exibido apenas para Motivo == "Outro") -->
+                <div id="grupo-assunto" class="form-group oculto">
+                    <label for="assunto-adicional">Assunto adicional <span class="obrigatorio">*</span></label>
+                    <input type="text" id="assunto-adicional" name="assunto" minlength="5" maxlength="100" placeholder="Especifique o assunto" disabled aria-describedby="erro-assunto-adicional">
+                    <small id="erro-assunto-adicional" class="mensagem-erro oculto"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem-contato">Mensagem <span class="obrigatorio">*</span></label>
+                    <textarea id="mensagem-contato" name="mensagem" required minlength="30" maxlength="1000" placeholder="Escreva o que você deseja falar ao proprietário do site" aria-describedby="contador-mensagem erro-mensagem-contato"></textarea>
+                    <small id="contador-mensagem" class="dica">0 / 1000 caracteres (mínimo de 30)</small>
+                    <small id="erro-mensagem-contato" class="mensagem-erro oculto"></small>
+                </div>
+
+                <!-- CONTROLE DE TESTE (Para alternar entre Sucesso e Falha no envio simulado) -->
+                <!-- <fieldset class="controles-teste">
+                    <legend>Modo de Teste de Envio (Simulação)</legend>
+                    <label>
+                        <input type="radio" name="simulacao-resultado" value="sucesso" checked> Simular Sucesso
+                    </label>
+                    <label>
+                        <input type="radio" name="simulacao-resultado" value="falha"> Simular Falha
+                    </label>
+                </fieldset>
+                -->
+                <button type="submit" id="btn-enviar-contato">Enviar mensagem</button>
+            </form>
+
+            <div class="canal-real">
+                <p><strong>Canal de contato real:</strong> <a href="mailto:guilherme.brito@ucsal.edu.br">guilherme.brito@ucsal.edu.br</a></p>
+                <small>* Esta aplicação utiliza uma função assíncrona de demonstração acadêmica e nenhum e-mail real é enviado pelo formulário acima.</small>
+            </div>
+        </section>
+
+        <!-- CANAIS E REDES -->
+        <aside>
+           <p>Objetivo atual: desenvolver meus primeiros projetos Front-End.</p>
+            <ul>
+                <li><a href="https://github.com/GuiBrito0" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/guilherme-brito-92a868437/" target="_blank" rel="noopener noreferrer">Linkedin</a></li>
+                <li>Interesse: Desenvolvimento web</li>
+                <li>Inglês: Intermediário</li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>Portfólio de Guilherme Brito - 2026</p>
+        <p>Desenvolvido como atividade da disciplina de Programação Front-End.</p>
+    </footer>
+</body>
+</html>

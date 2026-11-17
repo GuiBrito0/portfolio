@@ -1,0 +1,709 @@
+/* Cores do tema escuro (padrão) */
+:root {
+    --fundo: #18191b;
+    --fundo-2: #212226;
+    --borda: #33353a;
+    --texto: #e6e6e6;
+    --texto-2: #a3a3a3;
+    --azul: #5aa2ff;
+    --botao: #2f6fdb;
+    --botao-hover: #255bb8;
+    --erro: #ff7b72;
+    --sucesso: #6fcf8a;
+}
+
+/* Cores do tema claro (classe adicionada pelo JavaScript) */
+body.claro {
+    --fundo: #f7f7f8;
+    --fundo-2: #ffffff;
+    --borda: #d9d9de;
+    --texto: #1f1f22;
+    --texto-2: #5c5c63;
+    --azul: #1d5fcf;
+    --botao: #1d5fcf;
+    --botao-hover: #174ca6;
+    --erro: #c0281e;
+    --sucesso: #1d7a3a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    --altura-menu: 62px;
+    scroll-behavior: smooth;
+    /* ao clicar no menu, a seção para logo abaixo do menu fixo */
+    scroll-padding-top: var(--altura-menu);
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    background-color: var(--fundo);
+    color: var(--texto);
+}
+
+a {
+    color: var(--azul);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.oculto {
+    display: none !important;
+}
+
+:focus-visible {
+    outline: 2px solid var(--azul);
+    outline-offset: 2px;
+}
+
+/* ---------- Cabeçalho ---------- */
+
+/* Menu fica preso no topo enquanto rola */
+.cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: var(--altura-menu);
+    display: flex;
+    align-items: center;
+    background-color: var(--fundo);
+    border-bottom: 1px solid var(--borda);
+}
+
+.cabecalho-inner {
+    width: 100%;
+}
+
+.cabecalho-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 24px;
+}
+
+.nome {
+    color: var(--texto);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    margin-left: auto;
+}
+
+.menu a {
+    color: var(--texto-2);
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: var(--texto);
+    text-decoration: underline;
+}
+
+#tema {
+    margin: 0;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    background: transparent;
+    color: var(--texto);
+    border: 1px solid var(--borda);
+}
+
+#tema:hover {
+    background: var(--fundo-2);
+}
+
+/* ---------- Conteúdo ---------- */
+
+/* Primeira tela em grade 2x2:
+   [ foto     | Meu portfólio ]
+   [ objetivo | Sobre mim     ] */
+.inicio {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-areas:
+        "foto  intro"
+        "aside sobre";
+    gap: 40px 64px;
+    align-items: start;
+}
+
+.inicio .foto        { grid-area: foto; }
+.inicio .intro       { grid-area: intro; align-self: center; margin-bottom: 0; }
+.inicio aside        { grid-area: aside; margin-top: 0; }
+.inicio .sobre-texto { grid-area: sobre; }
+
+.foto {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--borda);
+}
+
+.intro {
+    margin-bottom: 40px;
+}
+
+.intro h1 {
+    margin: 0 0 8px;
+    font-size: 2.2rem;
+}
+
+.intro p {
+    margin: 0;
+    color: var(--texto-2);
+    max-width: 600px;
+}
+
+/* Cada seção ocupa uma tela inteira (menos a altura do menu)
+   e o conteúdo fica centralizado na vertical */
+.secao {
+    min-height: calc(100vh - var(--altura-menu));
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+.secao-conteudo {
+    width: 100%;
+}
+
+.secao:last-child {
+    border-bottom: 0;
+}
+
+h2 {
+    margin: 0 0 16px;
+    font-size: 1.5rem;
+}
+
+h3 {
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+}
+
+/* Bloco "Objetivo atual" embaixo da foto */
+.ficha p {
+    margin: 0;
+}
+
+.ficha-rotulo {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--texto-2);
+}
+
+.ficha-objetivo {
+    margin-bottom: 14px !important;
+    line-height: 1.4;
+}
+
+.ficha ul {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+}
+
+.ficha li {
+    padding: 8px 0;
+    border-top: 1px solid var(--borda);
+    line-height: 1.3;
+}
+
+.ficha li:last-child {
+    border-bottom: 1px solid var(--borda);
+}
+
+.ficha-links {
+    display: flex;
+    gap: 8px;
+}
+
+.ficha-links a {
+    padding: 6px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.ficha-links a:hover {
+    border-color: var(--azul);
+}
+
+/* Cards das linguagens (Conhecimentos) */
+/* 3 cards por linha; a última linha fica centralizada */
+.linguagens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.linguagem {
+    flex: 0 1 calc((100% - 32px) / 3);
+    padding: 24px 16px;
+    text-align: center;
+    background-color: var(--fundo-2);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.linguagem:hover {
+    transform: translateY(-4px);
+    border-color: var(--azul);
+}
+
+.linguagem img {
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 12px;
+}
+
+.linguagem h3 {
+    margin-bottom: 4px;
+}
+
+.linguagem p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--texto-2);
+}
+
+.linguagem .nivel {
+    margin-bottom: 4px;
+}
+
+.linguagem .nivel strong {
+    color: var(--texto);
+}
+
+/* ---------- Botões ---------- */
+
+button,
+.botao {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 16px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: var(--botao);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.botao:hover {
+    background-color: var(--botao-hover);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+button.remover {
+    margin-left: 6px;
+    background-color: transparent;
+    color: var(--erro);
+    border-color: var(--borda);
+}
+
+button.remover:hover {
+    background-color: transparent;
+    border-color: var(--erro);
+}
+
+.botao-link {
+    margin-top: 0;
+    padding: 0;
+    background: none;
+    color: var(--azul);
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.botao-link:hover {
+    background: none;
+}
+
+/* ---------- Formulários ---------- */
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+/* asterisco discreto: o vermelho fica reservado para os erros */
+.obrigatorio {
+    color: var(--texto-2);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--texto);
+    background-color: var(--fundo-2);
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--azul);
+}
+
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
+    border-color: var(--erro);
+}
+
+.dica {
+    font-size: 0.85rem;
+    color: var(--texto-2);
+    margin-top: 4px;
+}
+
+.mensagem-erro {
+    font-size: 0.85rem;
+    color: var(--erro);
+    margin-top: 4px;
+}
+
+/* ---------- Contato: mesma grade da primeira tela ----------
+   [ título, e-mail, links | formulário ] */
+.contato {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px 64px;
+    align-items: start;
+}
+
+.contato-texto {
+    margin: 0 0 24px;
+    color: var(--texto-2);
+}
+
+.contato-info .ficha li a {
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+.aviso {
+    margin: 20px 0 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--texto-2);
+}
+
+/* caixa do formulário: mesma borda e raio dos cards de projeto */
+#form-contato {
+    padding: 24px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+}
+
+/* Nome e E-mail lado a lado */
+.form-linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+}
+
+#btn-enviar-contato {
+    align-self: flex-start;
+    margin-top: 4px;
+}
+
+/* ---------- Projetos ---------- */
+
+#cadastro {
+    margin-bottom: 20px;
+}
+
+/* Modo de edição: cadastro e "Remover" ficam escondidos para visitantes.
+   O JavaScript adiciona a classe .editando quando o endereço tem ?editar */
+body:not(.editando) #cadastro,
+body:not(.editando) .remover {
+    display: none;
+}
+
+#cadastro button {
+    align-self: flex-start;
+}
+
+/* No computador o cadastro fica numa linha só: nome | categoria | botão */
+@media (min-width: 700px) {
+    #cadastro {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    #cadastro .form-group {
+        margin-bottom: 0;
+    }
+
+    #cadastro .form-group:first-child {
+        flex: 2;
+    }
+
+    #cadastro .form-group:nth-child(2) {
+        flex: 1;
+    }
+
+    /* empurra o botão para a altura dos campos (altura do label) */
+    #cadastro button {
+        margin-top: 31px;
+    }
+}
+
+.controles-filtro {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    margin-bottom: 16px;
+}
+
+.controles-filtro label {
+    margin: 0;
+}
+
+.controles-filtro select {
+    width: auto;
+}
+
+#contador-visiveis {
+    color: var(--texto-2);
+    font-size: 0.9rem;
+}
+
+.projetos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.projeto {
+    padding: 18px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+}
+
+.projeto p {
+    margin: 0 0 6px;
+    color: var(--texto-2);
+}
+
+/* ---------- Mensagens ---------- */
+
+#status:empty {
+    display: none;
+}
+
+#status, .status-envio, .resumo-erros, .mensagem-vazia {
+    padding: 10px 12px;
+    border: 1px solid var(--borda);
+    border-left-width: 4px;
+    border-radius: 4px;
+}
+
+#status.sucesso, .status-envio.sucesso {
+    border-color: var(--sucesso);
+    color: var(--sucesso);
+}
+
+#status.erro, .status-envio.erro, .resumo-erros {
+    border-color: var(--erro);
+    color: var(--erro);
+}
+
+.mensagem-vazia {
+    color: var(--texto-2);
+}
+
+/* ---------- Rodapé ---------- */
+
+.rodape {
+    border-top: 1px solid var(--borda);
+    padding: 16px 0;
+    font-size: 0.85rem;
+    color: var(--texto-2);
+}
+
+.rodape p {
+    margin: 4px 0;
+}
+
+/* ---------- Celular ---------- */
+
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+
+    .menu {
+        order: 3;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #tema {
+        margin-left: auto;
+    }
+
+    /* no celular o menu quebra em duas linhas, então fica mais alto */
+    html {
+        --altura-menu: 96px;
+    }
+
+    .intro {
+        margin-bottom: 32px;
+    }
+
+    /* no celular a foto fica em cima e menor */
+    .inicio {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "foto"
+            "intro"
+            "sobre"
+            "aside";
+        gap: 24px;
+    }
+
+    .foto {
+        width: 140px;
+    }
+
+    .intro h1 {
+        font-size: 1.8rem;
+    }
+
+    .projetos {
+        grid-template-columns: 1fr;
+    }
+
+    /* no celular os cards das linguagens ficam um embaixo do outro,
+       com a logo do lado do texto */
+    .linguagens {
+        gap: 8px;
+    }
+
+    .linguagem {
+        flex-basis: 100%;
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        column-gap: 14px;
+        align-items: center;
+        padding: 10px 14px;
+        text-align: left;
+    }
+
+    .linguagem img {
+        grid-row: span 3;
+        width: 40px;
+        height: 40px;
+        margin: 0;
+    }
+
+    .linguagem p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+
+    /* contato: uma coluna só, campos um embaixo do outro */
+    .contato {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .form-linha {
+        grid-template-columns: 1fr;
+    }
+
+    #form-contato {
+        padding: 16px;
+    }
+
+    #btn-enviar-contato {
+        align-self: stretch;
+    }
+}
+
+/* ---------- Página Clube.html ---------- */
+
+.clube img {
+    margin-top: 24px;
+}
+
+.clube h1 {
+    margin: 8px 0;
+}
+
+.clube hr {
+    border: 0;
+    border-top: 1px solid var(--borda);
+    margin: 24px 0;
+}
+
+.clube h2 {
+    font-size: 1.3rem;
+}
+
+.clube ul {
+    padding-left: 20px;
+}
+
+.clube main {
+    padding-bottom: 32px;
+}
